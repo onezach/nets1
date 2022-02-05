@@ -6,4 +6,10 @@ public class Iperfer {
             System.out.println("Error");
         }
     }
+
+    public void client() {
+
+
+        return;
+    }
 }
