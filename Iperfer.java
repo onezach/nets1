@@ -13,4 +13,8 @@ public class Iperfer {
 
         return;
     }
+
+    public void server() {
+        return;
+    }
 }
