@@ -28,7 +28,7 @@ public class Iperfer {
         }
 
         int portNumber = Integer.parseInt(args[4]);
-        if (portNumber < 1024 || portNumber > 65535) {
+        if (portNumber <= 1024 || portNumber >= 65535) {
             System.out.println("Error: port number must be in the range 1024 to 65535");
             System.exit(1);
         }
@@ -61,7 +61,7 @@ public class Iperfer {
             System.exit(1);
         }
         int port = Integer.parseInt(args[2]);
-        if (port < 1024 || port > 65535) {
+        if (port <= 1024 || port >= 65535) {
             System.out.println("Error: port number must be in the range 1024 to 65535");
             System.exit(1);
         }
