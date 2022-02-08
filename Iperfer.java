@@ -42,11 +42,17 @@ public class Iperfer {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         )
         {
-            String userInput;
-            while ((userInput = stdIn.readLine()) != null) {
-                out.println(userInput);
-                System.out.println(in.readLine());
-            }   
+            int seconds = Integer.parseInt(args[6]);
+            byte[] send = new byte[1000];
+            int counter = 0;
+            long end = System.currentTimeMillis() + (seconds*1000);
+            while (System.currentTimeMillis() < end) {
+                out.println(send);
+                counter++;
+            }
+
+            double mbps = (counter * 8) / (seconds * 1000);
+            System.out.println("sent=" + counter + " KB rate=" + mbps + " Mbps");
         }
 
         catch (IOException e) { System.exit(1); }
