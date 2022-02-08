@@ -48,7 +48,6 @@ public class Iperfer {
             long end = System.currentTimeMillis() + (seconds*1000);
             while (System.currentTimeMillis() < end) {
                 out.println(send);
-                System.out.println("sent");
                 counter++;
             }
 
