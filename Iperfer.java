@@ -90,10 +90,11 @@ public class Iperfer {
             }
             long end = System.currentTimeMillis();
             long duration = (end - start) / 1000;
-            double megabits = (bytes_read * 8) / 1000;
+            double megabits = (bytes_read * 8) / 1000000;
             double mbps = megabits / duration;
+            int KB_read = bytes_read / 1024;
 
-            System.out.println("recieved=" + bytes_read + " KB rate=" + mbps + " Mbps");
+            System.out.println("recieved=" + KB_read + " KB rate=" + mbps + " Mbps");
             
 
         } catch (IOException e) {
