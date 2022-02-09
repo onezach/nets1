@@ -42,15 +42,17 @@ public class Iperfer {
             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
         )
         {
-            int seconds = Integer.parseInt(args[6]);
-            int counter = 0;
+            long seconds = Integer.parseInt(args[6]);
+            long counter = 0;
             long end = System.currentTimeMillis() + (seconds*1000);
+
             while (System.currentTimeMillis() < end) {
                 out.print(new byte[1000]);
                 counter++;
             }
 
-            double mbps = (counter * 8) / (seconds * 1000);
+            double mbps = (counter * 8) / (seconds * 1000); 
+            // kilobytes * 1000 --> bytes * 8 --> bits / 1000000 --> megabits / seconds --> megabits/sec
             System.out.println("sent=" + counter + " KB rate=" + mbps + " Mbps");
         }
 
@@ -81,18 +83,17 @@ public class Iperfer {
         {
             //inside try block
             int rv;
-            int bytes_read = 0;
+            long bytes_read = 0;
             long start = System.currentTimeMillis();
             while((rv = in.read(new byte[1000])) != -1) {
                 bytes_read += rv;
                 // Ask TA: if connection is closed, won't I/O error prevent rv from updating?
-
             }
             long end = System.currentTimeMillis();
             long duration = (end - start) / 1000;
             double megabits = (bytes_read * 8) / 1000000;
             double mbps = megabits / duration;
-            int KB_read = bytes_read / 1024;
+            double KB_read = bytes_read / 1024;
 
             System.out.println("recieved=" + KB_read + " KB rate=" + mbps + " Mbps");
             
