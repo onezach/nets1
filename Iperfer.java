@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,16 +40,16 @@ public class Iperfer {
         try (
             Socket socket = new Socket(hostname, portNumber);
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         )
         {
             long seconds = Integer.parseInt(args[6]);
             long counter = 0;
             long end = System.currentTimeMillis() + (seconds*1000);
 
+            byte[] chunk = new byte[1000];
             while (System.currentTimeMillis() < end) {
-                out.print(new byte[1000]);
+                dos.write(chunk,0,1000);
                 counter++;
             }
 
@@ -87,7 +88,8 @@ public class Iperfer {
             long bytes_read = 0;
             long start = System.currentTimeMillis();
             // long counter = 0;
-            while((rv = in.read(new byte[1000])) != -1) {
+            byte[] chunk = new byte[1000];
+            while((rv = in.read(chunk)) > 0) {
                 bytes_read += rv;
                 // Ask TA: if connection is closed, won't I/O error prevent rv from updating?
                 // counter++;
