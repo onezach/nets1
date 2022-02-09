@@ -1,9 +1,7 @@
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -39,7 +37,7 @@ public class Iperfer {
 
         try (
             Socket socket = new Socket(hostname, portNumber);
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            // PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         )
         {
@@ -47,9 +45,9 @@ public class Iperfer {
             long counter = 0;
             long end = System.currentTimeMillis() + (seconds*1000);
 
-            byte[] chunk = new byte[1000];
+            byte[] send = new byte[1000];
             while (System.currentTimeMillis() < end) {
-                dos.write(chunk,0,1000);
+                dos.write(send,0,1000);
                 counter++;
             }
 
@@ -87,22 +85,19 @@ public class Iperfer {
             int rv;
             long bytes_read = 0;
             long start = System.currentTimeMillis();
-            // long counter = 0;
+
             byte[] chunk = new byte[1000];
             while((rv = in.read(chunk)) > 0) {
                 bytes_read += rv;
-                // Ask TA: if connection is closed, won't I/O error prevent rv from updating?
-                // counter++;
             }
+
             long end = System.currentTimeMillis();
-            // System.out.println(counter);
             long duration = (end - start) / 1000;
             double megabits = (bytes_read * 8) / 1000000;
             double mbps = megabits / duration;
             double KB_read = bytes_read / 1024;
 
-            System.out.println("recieved=" + KB_read + " KB rate=" + mbps + " Mbps");
-            
+            System.out.println("recieved=" + (int) KB_read + " KB rate=" + mbps + " Mbps");
 
         } catch (IOException e) {
             System.exit(1);
