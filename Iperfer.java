@@ -85,11 +85,14 @@ public class Iperfer {
             int rv;
             long bytes_read = 0;
             long start = System.currentTimeMillis();
+            long counter = 0;
             while((rv = in.read(new byte[1000])) != -1) {
                 bytes_read += rv;
                 // Ask TA: if connection is closed, won't I/O error prevent rv from updating?
+                counter++;
             }
             long end = System.currentTimeMillis();
+            System.out.println(counter);
             long duration = (end - start) / 1000;
             double megabits = (bytes_read * 8) / 1000000;
             double mbps = megabits / duration;
