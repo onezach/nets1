@@ -43,11 +43,10 @@ public class Iperfer {
         )
         {
             int seconds = Integer.parseInt(args[6]);
-            byte[] send = new byte[1000];
             int counter = 0;
             long end = System.currentTimeMillis() + (seconds*1000);
             while (System.currentTimeMillis() < end) {
-                out.println(send);
+                out.print(new byte[1000]);
                 counter++;
             }
 
