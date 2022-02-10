@@ -50,8 +50,8 @@ public class Iperfer {
                 counter++;
             }
 
-            double mbps = (counter * 8 * 1024) / (seconds * 1000000); 
-            // kilobytes * 1024 --> bytes * 8 --> bits / 1000000 --> megabits / seconds --> megabits/sec
+            double mbps = (counter * 8) / (seconds * 1000); 
+            // kilobytes * 1000 --> bytes * 8 --> bits / 1000000 --> megabits / seconds --> megabits/sec
             System.out.println("sent=" + counter + " KB rate=" + mbps + " Mbps");
         }
 
