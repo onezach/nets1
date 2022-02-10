@@ -37,7 +37,6 @@ public class Iperfer {
 
         try (
             Socket socket = new Socket(hostname, portNumber);
-            // PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         )
         {
