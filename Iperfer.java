@@ -37,6 +37,7 @@ public class Iperfer {
 
         try (
             Socket socket = new Socket(hostname, portNumber);
+            // PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
             DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         )
         {
@@ -50,8 +51,8 @@ public class Iperfer {
                 counter++;
             }
 
-            double mbps = (counter * 8 * 1024) / (seconds * 1000000); 
-            // kilobytes * 1024 --> bytes * 8 --> bits / 1000000 --> megabits / seconds --> megabits/sec
+            double mbps = (counter * 8) / (seconds * 1000); 
+            // kilobytes * 1000 --> bytes * 8 --> bits / 1000000 --> megabits / seconds --> megabits/sec
             System.out.println("sent=" + counter + " KB rate=" + mbps + " Mbps");
         }
 
@@ -92,9 +93,9 @@ public class Iperfer {
 
             long end = System.currentTimeMillis();
             long duration = (end - start) / 1000;
-            long megabits = (bytes_read * 8) / 1000000;
+            double megabits = (bytes_read * 8) / 1000000;
             double mbps = megabits / duration;
-            long KB_read = bytes_read / 1024;
+            double KB_read = bytes_read / 1024;
 
             System.out.println("recieved=" + (int) KB_read + " KB rate=" + mbps + " Mbps");
 
