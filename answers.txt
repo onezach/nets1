@@ -1,0 +1,11 @@
+Q2:
+
+Q3:
+
+Q4:
+Predictions:
+    H1-->H4 Latency: 183ms
+    H1-->H4 Throughput: 19.0 Mbps
+
+    H5-->H6 Latency: 62ms
+    H5-->H6 Throughput: 24.0 Mbps
