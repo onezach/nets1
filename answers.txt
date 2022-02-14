@@ -1,6 +1,50 @@
 Q2:
+Predictions:
+    H1-->H4 Latency: 162 ms
+    H1-->H4 throughput send: 23.0 Mbps
+    H1-->H4 throughput recieve: 19.0 Mbps
+Actual:
+    H1-->H4 Latency: 161.171 ms
+    H1-->H4 throughput send: 23.0 Mbps
+    H1-->H4 throughput recieve: 19.0 Mbps
+Analysis:
+The latency refers to how long it takes for packets to send over a connection. Since we knew the latency for the connections that comprised H1-H4 (L1, L2, and L3), our guess was to add all the corresponding latencies. This seemed to be correct as our guess was only off by 0.82ms.
+Since Throughput refers to how many Mbps you can send, you will be limited by your slowest link, no matter how fast the rest of the links are. Since our lowest was L1 at 23.0 Mbps out and 19.0 Mbps in, we guessed that we would recieve the same, which appears to be correct.
+
 
 Q3:
+two pairs, H1-H4 and H7-H9
+
+Predictions:
+latency = 160 ms for both
+throughput = ~11 Mbps for both
+
+Actual:
+H1-->H4 latency actual = 160.438 ms
+H7-->H9 latency actual = 161.399 ms
+H1-->H4 throughput actual = 10 Mbps send, 7 Mbps recieve
+H7-->H9 throughput actual = 16 Mbps send, 11 Mbps recieve
+
+We gussed that latency would be unaffected as packet size of 64KB doesn't come close to maxing out bandwith of ~20 Mbp. So packets can be multi plexed at same rate as before. This prooved true.
+We gussed that throughput would be evenly split among the connections. It was not, with aproximetly 2/3 of it going to H7-H9 and the other third going to H1-H4. This is interesting as this shows that the connections are not given equal broadband.
+
+three pairs, H1-H4, H7-H9, H8-H10
+
+Predictions:
+latencty = 160ms for all three
+throughput = ~7Mbps for all three
+
+Actual:
+H1-->H4 latency = 161.249 ms
+H7-->H9 latency = 161.301 ms
+H8-->H10 latency = 161.429 ms
+
+H1-H4 throughput actual = 12.0 Mbps send, 9.0 Mbps recieve
+H7-H9 throughput actual = 8.0 Mbps send, 6.0 Mbps recieve
+H8-H10 throughput actual = 5.0 Mbps send, 4.0 Mbps recieve
+
+We gussed that latency would be unaffected for same reason as the two pairs and this seemed to hold true. We gussed that this time, broadband would be split evenly but this prooved false again. 
+H1-H4 took around half of the total broadband with H7-H9 taking a third and H8-H10 taking the remaining sixth. This is suprising again, as broadband is distributed unevenly. H1-H4 is getting almost three times the amount of broadband that H8-H10 is getting.
 
 Q4:
 Predictions:
