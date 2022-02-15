@@ -43,13 +43,20 @@ H1-H4 throughput actual = 12.0 Mbps send, 9.0 Mbps recieve
 H7-H9 throughput actual = 8.0 Mbps send, 6.0 Mbps recieve
 H8-H10 throughput actual = 5.0 Mbps send, 4.0 Mbps recieve
 
-We gussed that latency would be unaffected for same reason as the two pairs and this seemed to hold true. We gussed that this time, broadband would be split evenly but this prooved false again. 
+We gussed that latency would be unaffected for same reason as the two pairs and this seemed to hold true. We gussed that this time, broadband would be split evenly but this proved false again. 
 H1-H4 took around half of the total broadband with H7-H9 taking a third and H8-H10 taking the remaining sixth. This is suprising again, as broadband is distributed unevenly. H1-H4 is getting almost three times the amount of broadband that H8-H10 is getting.
 
 Q4:
 Predictions:
     H1-->H4 Latency: 183ms
-    H1-->H4 Throughput: 19.0 Mbps
+    H1-->H4 Throughput: ~19 Mbps
 
     H5-->H6 Latency: 62ms
-    H5-->H6 Throughput: 24.0 Mbps
+    H5-->H6 Throughput: ~20 Mbps
+
+Results:
+    H1-->H4 Latency (avg RTT): 161.165ms (figured for double time on L2, but ends up not being a factor because of how little data is being passed through, so result is off by ~20ms)
+    H1-->H4 Throughput: 20.0 Mbps sent, 17.0 Mbps received
+
+    H5-->H6 Latency: 41.310ms (same idea as H1-->H4 latency)
+    H5-->H6 Throughput: 23.0 Mbps sent, 20.0 Mbps received
